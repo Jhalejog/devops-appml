@@ -1,6 +1,8 @@
 import pickle
 import json
 from pathlib import Path
+from flask import render_template
+
 
 import numpy as np
 from flask import Flask, request, jsonify
@@ -24,12 +26,13 @@ FEATURES = metadata['features']
 # ---------------------------------------------------------------------------
 # Rutas
 # ---------------------------------------------------------------------------
+
 @app.route('/')
 def index():
-    return jsonify({'status': 'ok', 'model': metadata['model'], 'version': metadata['exported_at']})
+    return render_template('index.html')
 
 
-@app.route('/health')
+@app.route('/vale ')
 def health():
     return jsonify({'status': 'ok'})
 
@@ -55,7 +58,6 @@ def predict():
         'unit': '100k USD',
         'features_used': FEATURES,
     })
-
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080)
