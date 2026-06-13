@@ -30,19 +30,16 @@ Source: `sklearn.datasets.fetch_california_housing` (derived from the 1990 U.S. 
 ## Architecture
 
 ```
-app.py                  Flask entry point — exposes prediction endpoints
-src/data/               Data ingestion and preprocessing
-src/features/           Feature engineering
-src/models/             Model training and evaluation
-src/utils/              Shared utilities
-data/raw/               Original unmodified data
-data/processed/         Cleaned data ready for training
-models/                 Serialized model artifacts (.pkl, .onnx, etc.)
-configs/                Hyperparameters and config (YAML/JSON)
-notebooks/              Exploration and experimentation
-tests/                  Unit and integration tests
-docker/                 Dockerfiles for containerization
-.github/workflows/      CI/CD pipelines
+devops-appml/
+├── app.py                          Flask entry point — exposes prediction endpoints
+├── requirements.txt                Python dependencies
+├── src/
+│   └── data/
+│       ├── ingest.py               Data ingestion from sklearn datasets
+│       └── preprocess.py           Data cleaning and preprocessing
+├── notebooks/
+│   └── 01_eda_preliminar.ipynb     Exploratory data analysis
+└── tests/                          Unit and integration tests
 ```
 
 ## Running the App
